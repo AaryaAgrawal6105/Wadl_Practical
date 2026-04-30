@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="styles.css">
+
+<header>
+    <h1>Product Catalog</h1>
+</header>
+
+<div class="container">
+    <div class="grid" id="products"></div>
+</div>
+
+<script>
+fetch("/api/products")
+  .then(res => res.json())
+  .then(data => {
+    let html = "";
+    data.forEach(p => {
+      html += `
+        <div class="card">
+          <img src="${p.image}">
+          <h3>${p.name}</h3>
+          <p>₹${p.price}</p>
+        </div>`;
+    });
+    document.getElementById("products").innerHTML = html;
+  });
+</script>

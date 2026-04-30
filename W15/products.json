@@ -1,0 +1,4 @@
+[
+  { "name": "Headphones", "price": 7999, "image": "img1.jpg" },
+  { "name": "Mouse", "price": 2499, "image": "img2.jpg" }
+]

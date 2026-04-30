@@ -1,0 +1,14 @@
+<h2>Song List</h2>
+<ul id="list"></ul>
+
+<script>
+fetch("/all")
+  .then(res => res.json())
+  .then(data => {
+    let html = "";
+    data.forEach(s => {
+      html += `<li>${s.songname} - ${s.singer}</li>`;
+    });
+    document.getElementById("list").innerHTML = html;
+  });
+</script>

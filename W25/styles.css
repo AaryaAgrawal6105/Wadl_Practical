@@ -1,0 +1,62 @@
+/* GLOBAL */
+body {
+    font-family: 'Segoe UI', sans-serif !important;
+    background: #f4f6fb !important;
+}
+
+/* HEADER */
+.ui-header {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.ui-header h1 {
+    color: white !important;
+}
+
+/* NAVBAR */
+.ui-navbar ul li a {
+    background: #eef2ff !important;
+    color: #333 !important;
+    font-weight: 500;
+}
+
+.ui-navbar ul li a.ui-btn-active {
+    background: #4f46e5 !important;
+    color: white !important;
+}
+
+/* CONTENT SPACING */
+.ui-content {
+    padding: 15px !important;
+}
+
+/* COLLAPSIBLE (cards feel) */
+.ui-collapsible {
+    margin-bottom: 15px !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+
+.ui-collapsible-heading a {
+    background: #ffffff !important;
+    font-weight: 600;
+}
+
+.ui-collapsible-content {
+    background: #f9fafb !important;
+}
+
+/* IMAGES */
+img {
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* FOOTER */
+.ui-footer {
+    background: #222 !important;
+    color: white !important;
+    text-align: center;
+}

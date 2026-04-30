@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="styles.css">
+
+<header>
+    <h1>Employee Directory</h1>
+</header>
+
+<div class="container">
+    <div class="grid" id="emps"></div>
+</div>
+
+<script>
+fetch("/api/employees")
+  .then(res => res.json())
+  .then(data => {
+    let html = "";
+
+    data.forEach(e => {
+      html += `
+        <div class="card">
+          <img src="${e.image}">
+          <h3>${e.name}</h3>
+          <p>${e.designation}</p>
+          <p>${e.department}</p>
+          <p>₹${e.salary}</p>
+        </div>`;
+    });
+
+    document.getElementById("emps").innerHTML = html;
+  });
+</script>

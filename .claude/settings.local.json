@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"d:/SEM 6 MINI Projects/Wadl and CC practical/W21/lib\")",
+      "Bash(curl -sSLO https://code.jquery.com/jquery-2.1.4.min.js)",
+      "Bash(curl -sSLO https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js)",
+      "Bash(curl -sSLO https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css)",
+      "Bash(mv jquery-2.1.4.min.js jquery.min.js)"
+    ]
+  }
+}

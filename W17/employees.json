@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Aarya",
+    "designation": "Developer",
+    "department": "IT",
+    "salary": 50000,
+    "image": "emp1.jpg"
+  },
+  {
+    "name": "Rahul",
+    "designation": "Manager",
+    "department": "HR",
+    "salary": 60000,
+    "image": "emp2.jpg"
+  }
+]
