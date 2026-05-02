@@ -27,8 +27,14 @@ body {
     color: white !important;
 }
 
+.ui-content h2{
+    font-weight: bold !important;
+    text-decoration: underline;
+}
+
 /* CONTENT SPACING */
 .ui-content {
+    background-color: rgb(207, 184, 230);
     padding: 15px !important;
 }
 
@@ -39,14 +45,6 @@ body {
     overflow: hidden;
 }
 
-.ui-collapsible-heading a {
-    background: #ffffff !important;
-    font-weight: 600;
-}
-
-.ui-collapsible-content {
-    background: #f9fafb !important;
-}
 
 /* IMAGES */
 img {

@@ -2,59 +2,74 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
-app.use(express.json());
+app.use(express.static("public"));
 
-// CONNECT DB
-mongoose.connect("mongodb://127.0.0.1:27017/music")
-  .then(() => console.log("Mongo Connected"));
+mongoose.connect("mongodb://127.0.0.1:27017/student");
 
-// SCHEMA
-const songSchema = new mongoose.Schema({
-  songname: String,
-  film: String,
-  music_director: String,
-  singer: String,
-  actor: String,
-  actress: String
+const Student = mongoose.model("Student", {
+  name: String,
+  roll_no: Number,
+  WAD: Number,
+  CC: Number,
+  DSBDA: Number,
+  CNS: Number,
+  AI: Number
 });
 
-const Song = mongoose.model("Song", songSchema);
-
-// INSERT 5 SONGS
+// c) Insert students
 app.get("/insert", async (req, res) => {
-  await Song.insertMany([
-    { songname: "S1", film: "F1", music_director: "MD1", singer: "Singer1" },
-    { songname: "S2", film: "F2", music_director: "MD1", singer: "Singer2" },
-    { songname: "S3", film: "F3", music_director: "MD2", singer: "Singer1" },
-    { songname: "S4", film: "F4", music_director: "MD2", singer: "Singer3" },
-    { songname: "S5", film: "F5", music_director: "MD3", singer: "Singer2" }
+  await Student.insertMany([
+    { name: "A", roll_no: 1, WAD: 25, CC: 27, DSBDA: 30, CNS: 28, AI: 29 },
+    { name: "B", roll_no: 2, WAD: 20, CC: 18, DSBDA: 15, CNS: 22, AI: 19 },
+    { name: "C", roll_no: 3, WAD: 30, CC: 30, DSBDA: 28, CNS: 30, AI: 30 },
+    { name: "D", roll_no: 4, WAD: 35, CC: 38, DSBDA: 22, CNS: 39, AI: 36 },
+    { name: "E", roll_no: 5, WAD: 38, CC: 32, DSBDA: 18, CNS: 28, AI: 35 }
   ]);
   res.send("Inserted");
 });
 
-// DISPLAY ALL
+// d) All students (count is computed on the page)
 app.get("/all", async (req, res) => {
-  res.json(await Song.find());
+  res.json(await Student.find());
 });
 
-// FILTER
-app.get("/director/:name", async (req, res) => {
-  res.json(await Song.find({ music_director: req.params.name }));
+// e) DSBDA > 20
+app.get("/dsbda", async (req, res) => {
+  res.json(await Student.find({ DSBDA: { $gt: 20 } }));
 });
 
-// DELETE
-app.get("/delete/:name", async (req, res) => {
-  await Song.deleteOne({ songname: req.params.name });
-  res.send("Deleted");
-});
-
-// UPDATE
+// f) Update specific student's marks by +10 in every subject
 app.get("/update/:name", async (req, res) => {
-  await Song.updateOne(
-    { songname: req.params.name },
-    { $set: { actor: "Actor1", actress: "Actress1" } }
+  await Student.updateOne(
+    { name: req.params.name },
+    { $inc: { WAD: 10, CC: 10, DSBDA: 10, CNS: 10, AI: 10 } }
   );
   res.send("Updated");
+});
+
+// g) > 25 in ALL subjects
+app.get("/topper", async (req, res) => {
+  res.json(await Student.find({
+    WAD: { $gt: 25 },
+    CC: { $gt: 25 },
+    DSBDA: { $gt: 25 },
+    CNS: { $gt: 25 },
+    AI: { $gt: 25 }
+  }));
+});
+
+// h) < 40 in BOTH DSBDA and CNS (PDF said Maths/Science — schema has no such fields)
+app.get("/weak", async (req, res) => {
+  res.json(await Student.find({
+    DSBDA: { $lt: 40 },
+    CNS: { $lt: 40 }
+  }));
+});
+
+// i) Delete a student
+app.get("/delete/:name", async (req, res) => {
+  await Student.deleteOne({ name: req.params.name });
+  res.send("Deleted");
 });
 
 app.listen(3000);

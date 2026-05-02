@@ -2,11 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
-app.use(express.json());
 
 mongoose.connect("mongodb://127.0.0.1:27017/employees");
 
-const empSchema = new mongoose.Schema({
+const Employee = mongoose.model("Employee", {
   name: String,
   department: String,
   designation: String,
@@ -14,28 +13,44 @@ const empSchema = new mongoose.Schema({
   joining_date: String
 });
 
-const Employee = mongoose.model("Employee", empSchema);
+// Seed sample employees
+app.get("/insert", async (req, res) => {
+  await Employee.insertMany([
+    { name: "John", department: "IT", designation: "Dev", salary: 50000, joining_date: "2024-01-01" },
+    { name: "Jane", department: "HR", designation: "Manager", salary: 60000, joining_date: "2023-05-15" }
+  ]);
+  res.send("Inserted");
+});
 
-// CREATE
-app.post("/add", async (req, res) => {
-  await Employee.create(req.body);
+// Add a new employee
+app.get("/add/:name/:dept/:desig/:salary/:date", async (req, res) => {
+  await Employee.create({
+    name: req.params.name,
+    department: req.params.dept,
+    designation: req.params.desig,
+    salary: req.params.salary,
+    joining_date: req.params.date
+  });
   res.send("Added");
 });
 
-// READ
+// View all
 app.get("/all", async (req, res) => {
   res.json(await Employee.find());
 });
 
-// UPDATE
-app.put("/update/:id", async (req, res) => {
-  await Employee.findByIdAndUpdate(req.params.id, req.body);
+// Update salary by name
+app.get("/update/:name/:salary", async (req, res) => {
+  await Employee.updateOne(
+    { name: req.params.name },
+    { $set: { salary: req.params.salary } }
+  );
   res.send("Updated");
 });
 
-// DELETE
-app.delete("/delete/:id", async (req, res) => {
-  await Employee.findByIdAndDelete(req.params.id);
+// Delete by name
+app.get("/delete/:name", async (req, res) => {
+  await Employee.deleteOne({ name: req.params.name });
   res.send("Deleted");
 });
 

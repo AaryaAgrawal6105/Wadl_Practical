@@ -2,39 +2,53 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
-app.use(express.json());
 
 mongoose.connect("mongodb://127.0.0.1:27017/books");
 
-const bookSchema = new mongoose.Schema({
+const Book = mongoose.model("Book", {
   title: String,
   author: String,
   price: Number,
   genre: String
 });
 
-const Book = mongoose.model("Book", bookSchema);
-
-// CREATE
-app.post("/add", async (req, res) => {
-  await Book.create(req.body);
-  res.send("Book added");
+// Seed sample books
+app.get("/insert", async (req, res) => {
+  await Book.insertMany([
+    { title: "B1", author: "A1", price: 500, genre: "Fiction" },
+    { title: "B2", author: "A2", price: 700, genre: "Tech" }
+  ]);
+  res.send("Inserted");
 });
 
-// READ
+// Add a new book
+app.get("/add/:title/:author/:price/:genre", async (req, res) => {
+  await Book.create({
+    title: req.params.title,
+    author: req.params.author,
+    price: req.params.price,
+    genre: req.params.genre
+  });
+  res.send("Added");
+});
+
+// View all
 app.get("/all", async (req, res) => {
   res.json(await Book.find());
 });
 
-// UPDATE
-app.put("/update/:id", async (req, res) => {
-  await Book.findByIdAndUpdate(req.params.id, req.body);
+// Update price by title
+app.get("/update/:title/:price", async (req, res) => {
+  await Book.updateOne(
+    { title: req.params.title },
+    { $set: { price: req.params.price } }
+  );
   res.send("Updated");
 });
 
-// DELETE
-app.delete("/delete/:id", async (req, res) => {
-  await Book.findByIdAndDelete(req.params.id);
+// Delete by title
+app.get("/delete/:title", async (req, res) => {
+  await Book.deleteOne({ title: req.params.title });
   res.send("Deleted");
 });
 

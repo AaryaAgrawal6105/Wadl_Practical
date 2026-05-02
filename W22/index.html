@@ -1,50 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="lib/jquery.mobile.min.css">
-<script src="lib/jquery.min.js"></script>
-<script src="lib/jquery.mobile.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="lib/jquery.mobile.min.css">
 <link rel="stylesheet" href="styles.css">
+<script src="lib/jquery.min.js"></script>
+<script src="lib/jquery.mobile.min.js"></script>
 </head>
 
 <body>
 
+<!-- HOME -->
 <div data-role="page" id="home">
 
-<div data-role="header">
-<h1>PICT</h1>
-<div data-role="navbar">
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#courses">Courses</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div>
+  <div data-role="header">
+    <h1>PICT</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#departments">Departments</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="content">
+    <h2>Welcome to PICT</h2>
+    <p>Pune Institute of Computer Technology, established 1983, is one of Pune's premier engineering colleges. Use the menu above to explore.</p>
+  </div>
+
+  <div data-role="footer"><h4>&copy; PICT, Pune</h4></div>
 </div>
 
-<div data-role="content">
-<h2>Welcome to PICT</h2>
+<!-- ABOUT -->
+<div data-role="page" id="about" data-add-back-btn="true">
+  <div data-role="header"><h1>About Us</h1></div>
+  <div data-role="content">
+    <h3>About PICT</h3>
+    <p>PICT is an autonomous engineering college affiliated with Savitribai Phule Pune University. It offers undergraduate and postgraduate programs in computer engineering, IT, and electronics.</p>
+    <p>The college is known for its strong placements, active technical communities, and vibrant student culture.</p>
+  </div>
+  <div data-role="footer"><h4>&copy; PICT, Pune</h4></div>
 </div>
 
+<!-- COURSES -->
+<div data-role="page" id="courses" data-add-back-btn="true">
+  <div data-role="header"><h1>Courses Offered</h1></div>
+  <div data-role="content">
+
+    <div data-role="collapsible">
+      <h3>B.E. Computer Engineering</h3>
+      <p>4-year undergraduate program covering programming, algorithms, systems, and AI.</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>B.E. Information Technology</h3>
+      <p>4-year program focused on web, networks, databases, and software engineering.</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>B.E. Electronics &amp; Telecommunication</h3>
+      <p>4-year program covering signal processing, embedded systems, and communication.</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>M.E. / M.Tech</h3>
+      <p>Postgraduate programs in Computer Engineering, VLSI, and Signal Processing.</p>
+    </div>
+
+  </div>
+  <div data-role="footer"><h4>&copy; PICT, Pune</h4></div>
 </div>
 
-<div data-role="page" id="about">
-<div data-role="header"><h1>About</h1></div>
-<div data-role="content"><p>About college</p></div>
+<!-- DEPARTMENTS -->
+<div data-role="page" id="departments" data-add-back-btn="true">
+  <div data-role="header"><h1>Departments</h1></div>
+  <div data-role="content">
+
+    <div data-role="collapsible">
+      <h3>Computer Engineering</h3>
+      <p>Largest department, focuses on core CS, software, and AI/ML.</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>Information Technology</h3>
+      <p>Web, cloud, and information systems.</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>Electronics &amp; Telecommunication</h3>
+      <p>Hardware, embedded systems, and communication networks.</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>First Year Engineering</h3>
+      <p>Common foundation for all branches in the first year.</p>
+    </div>
+
+  </div>
+  <div data-role="footer"><h4>&copy; PICT, Pune</h4></div>
 </div>
 
-<div data-role="page" id="courses">
-<div data-role="header"><h1>Courses</h1></div>
-<div data-role="content"><p>Courses offered</p></div>
+<!-- CONTACT -->
+<div data-role="page" id="contact" data-add-back-btn="true">
+  <div data-role="header"><h1>Contact</h1></div>
+  <div data-role="content">
+    <h3>Reach Us</h3>
+    <p><strong>Address:</strong> Survey No. 27, Near Trimurti Chowk, Dhankawadi, Pune &ndash; 411043</p>
+    <p><strong>Phone:</strong> +91-20-2437-1101</p>
+    <p><strong>Email:</strong> info@pict.edu</p>
+    <p><strong>Website:</strong> www.pict.edu</p>
+  </div>
+  <div data-role="footer"><h4>&copy; PICT, Pune</h4></div>
 </div>
-
-<div data-role="page" id="contact">
-<div data-role="header"><h1>Contact</h1></div>
-<div data-role="content"><p>Contact info</p></div>
-</div>
-<script src="lib/jquery.min.js"></script>
-<script src="lib/jquery.mobile.min.js"></script>
 
 </body>
 </html>

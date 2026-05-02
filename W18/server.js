@@ -2,45 +2,81 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
-
-mongoose.connect("mongodb://127.0.0.1:27017/student");
 app.use(express.static("public"));
-const studentSchema = new mongoose.Schema({
-  name: String,
-  roll_no: Number,
-  WAD: Number,
-  DSBDA: Number,
-  CNS: Number,
-  CC: Number,
-  AI: Number
+
+mongoose.connect("mongodb://127.0.0.1:27017/music");
+
+const Song = mongoose.model("Song", {
+  songname: String,
+  film: String,
+  music_director: String,
+  singer: String,
+  actor: String,
+  actress: String
 });
 
-const Student = mongoose.model("Student", studentSchema);
-
-// INSERT
+// c) Insert 5 songs
 app.get("/insert", async (req, res) => {
-  await Student.insertMany([
-    { name: "A", roll_no: 1, WAD: 25, DSBDA: 30, CNS: 28, CC: 27, AI: 29 },
-    { name: "B", roll_no: 2, WAD: 20, DSBDA: 15, CNS: 22, CC: 18, AI: 19 }
+  await Song.insertMany([
+    { songname: "S1", film: "F1", music_director: "MD1", singer: "Singer1" },
+    { songname: "S2", film: "F2", music_director: "MD1", singer: "Singer2" },
+    { songname: "S3", film: "F3", music_director: "MD2", singer: "Singer1" },
+    { songname: "S4", film: "F4", music_director: "MD2", singer: "Singer3" },
+    { songname: "S5", film: "F5", music_director: "MD3", singer: "Singer2" }
   ]);
   res.send("Inserted");
 });
 
-// >20 DSBDA
-app.get("/dsbda", async (req, res) => {
-  res.json(await Student.find({ DSBDA: { $gt: 20 } }));
+// d) All songs (count is shown by index.html)
+app.get("/all", async (req, res) => {
+  res.json(await Song.find());
 });
 
-// UPDATE +10
-app.get("/update", async (req, res) => {
-  await Student.updateMany({}, { $inc: { WAD: 10 } });
-  res.send("Updated");
+// e) By music director
+app.get("/director/:name", async (req, res) => {
+  res.json(await Song.find({ music_director: req.params.name }));
 });
 
-// DELETE
+// f) By music director + singer
+app.get("/director/:dir/singer/:singer", async (req, res) => {
+  res.json(await Song.find({
+    music_director: req.params.dir,
+    singer: req.params.singer
+  }));
+});
+
+// g) Delete a song
 app.get("/delete/:name", async (req, res) => {
-  await Student.deleteOne({ name: req.params.name });
+  await Song.deleteOne({ songname: req.params.name });
   res.send("Deleted");
+});
+
+// h) Add a favourite song
+app.get("/add/:song/:film/:dir/:singer", async (req, res) => {
+  await Song.create({
+    songname: req.params.song,
+    film: req.params.film,
+    music_director: req.params.dir,
+    singer: req.params.singer
+  });
+  res.send("Added");
+});
+
+// i) By singer + film
+app.get("/singer/:singer/film/:film", async (req, res) => {
+  res.json(await Song.find({
+    singer: req.params.singer,
+    film: req.params.film
+  }));
+});
+
+// j) Update: add actor and actress
+app.get("/update/:name", async (req, res) => {
+  await Song.updateOne(
+    { songname: req.params.name },
+    { $set: { actor: "Actor1", actress: "Actress1" } }
+  );
+  res.send("Updated");
 });
 
 app.listen(3000);

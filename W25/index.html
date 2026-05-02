@@ -1,42 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="lib/jquery.mobile.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<div data-role="page">
-
-<div data-role="header">
-<h1>My Portfolio</h1>
-</div>
-
-<div data-role="content">
-
-<div data-role="collapsible">
-<h3>About Me</h3>
-<p>Details</p>
-</div>
-
-<div data-role="collapsible">
-<h3>Projects</h3>
-<p>Project info</p>
-</div>
-
-<div data-role="collapsible">
-<h3>Skills</h3>
-<p>HTML, CSS, JS</p>
-</div>
-
-</div>
-
-</div>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Portfolio</title>
+<link rel="stylesheet" href="lib/jquery.mobile.min.css">
+<link rel="stylesheet" href="styles.css">
 <script src="lib/jquery.min.js"></script>
 <script src="lib/jquery.mobile.min.js"></script>
+</head>
+<body>
+
+<!-- HOME -->
+<div data-role="page" id="home">
+  <div data-role="header">
+    <h1>My Portfolio</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div data-role="content">
+    <h2>Hi, I'm Aarya</h2>
+    <p>Computer Engineering student at PICT, Pune. Welcome to my portfolio.</p>
+  </div>
+  <div data-role="footer"><h4>&copy; Aarya Agrawal</h4></div>
+</div>
+
+<!-- ABOUT -->
+<div data-role="page" id="about" data-add-back-btn="true">
+  <div data-role="header"><h1>About Me</h1>
+  <a href="#home" data-rel="back" class="ui-btn-left" data-icon="back">Back</a>
+  </div>
+  <div data-role="content">
+
+    <h3>About Me</h3>
+    <p>I am a B.E. Computer Engineering student at Pune Institute of Computer Technology (PICT). I enjoy building web applications, exploring new technologies, and contributing to open-source.</p>
+    <p>Outside of coding, I follow tech blogs, read non-fiction, and play badminton.</p>
+  </div>
+  <div data-role="footer"><h4>&copy; Aarya Agrawal</h4></div>
+</div>
+
+<!-- PROJECTS -->
+<div data-role="page" id="projects">
+  <div data-role="header"><h1>Projects</h1></div>
+  <div data-role="content">
+
+    <div data-role="collapsible">
+      <h3>Weather App</h3>
+      <p>Vanilla JS app that fetches weather from a local data store. Demonstrates AJAX and DOM manipulation.</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>Student Marks System</h3>
+      <p>Node.js + Express + MongoDB CRUD API for managing student marks across subjects.</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>To-Do List</h3>
+      <p>Full-stack to-do app with persistent storage and AJAX-based updates.</p>
+    </div>
+
+  </div>
+  <div data-role="footer"><h4>&copy; Aarya Agrawal</h4></div>
+</div>
+
+<!-- SKILLS -->
+<div data-role="page" id="skills" data-add-back-btn="true">
+  <div data-role="header"><h1>Skills</h1></div>
+  <div data-role="content">
+
+    <div data-role="collapsible">
+      <h3>Frontend</h3>
+      <p>HTML5, CSS3, JavaScript, Bootstrap, jQuery, Angular</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>Backend</h3>
+      <p>Node.js, Express.js, MongoDB, REST APIs</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>Languages</h3>
+      <p>Java, Python, C, C++, JavaScript</p>
+    </div>
+
+    <div data-role="collapsible">
+      <h3>Tools</h3>
+      <p>Git, GitHub, VS Code, Postman</p>
+    </div>
+
+  </div>
+  <div data-role="footer"><h4>&copy; Aarya Agrawal</h4></div>
+</div>
+
+<!-- CONTACT -->
+<div data-role="page" id="contact" data-add-back-btn="true">
+  <div data-role="header"><h1>Contact Info</h1></div>
+  <div data-role="content">
+    <h3>Get in touch</h3>
+    <p><strong>Email:</strong> aarya@example.com</p>
+    <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
+    <p><strong>GitHub:</strong> github.com/yourusername</p>
+    <p><strong>LinkedIn:</strong> linkedin.com/in/yourusername</p>
+  </div>
+  <div data-role="footer"><h4>&copy; Aarya Agrawal</h4></div>
+</div>
 
 </body>
 </html>
