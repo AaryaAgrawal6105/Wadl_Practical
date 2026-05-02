@@ -64,14 +64,31 @@ li {
     align-items: center;
 }
 
-/* SMALL BUTTON (delete) */
-li button {
-    width: auto;
-    padding: 5px 10px;
-    background: #ef4444;
+/* SMALL BUTTONS (edit/delete) */
+.actions {
+    display: flex;
+    gap: 8px;
 }
 
-li button:hover {
+li button {
+    width: auto;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+}
+
+.edit-btn {
+    background: #10b981; /* Green */
+}
+
+.edit-btn:hover {
+    background: #059669;
+}
+
+.del-btn {
+    background: #ef4444; /* Red */
+}
+
+.del-btn:hover {
     background: #dc2626;
 }
 
