@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Registration</title>
+    <title>Registration System</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -16,43 +13,24 @@
 
         <!-- Login Form -->
         <form id="loginForm" onsubmit="handleLogin(event)">
-            <h2>Welcome Back</h2>
-            <div class="input-group">
-                <input type="text" id="loginUser" required minlength="4" placeholder="Username">
-            </div>
-            <div class="input-group">
-                <input type="password" id="loginPass" required minlength="6" placeholder="Password">
-            </div>
+            <h2>Login</h2>
+            <input type="text" id="loginUser" placeholder="Username" required><br><br>
+            <input type="password" id="loginPass" placeholder="Password" required><br><br>
             <button type="submit" class="main-btn">Login</button>
         </form>
 
-        <!-- Registration Form -->
+        <!-- Register Form -->
         <form id="registerForm" onsubmit="handleRegister(event)" style="display: none;">
-            <h2>Create Account</h2>
-            <div class="grid">
-                <div class="input-group">
-                    <input type="text" id="regName" required minlength="3" pattern="^[a-zA-Z ]+$" title="Letters only, minimum 3 characters" placeholder="Full Name">
-                </div>
-                <div class="input-group">
-                    <input type="email" id="regEmail" required placeholder="Email Address">
-                </div>
-                <div class="input-group">
-                    <input type="tel" id="regMobile" required pattern="[0-9]{10}" title="Exactly 10 digits" placeholder="Mobile Number">
-                </div>
-                <div class="input-group">
-                    <input type="date" id="regDob" required title="Date of Birth">
-                </div>
-                <div class="input-group">
-                    <input type="text" id="regCity" required minlength="2" pattern="^[a-zA-Z ]+$" title="Letters only" placeholder="City">
-                </div>
-                <div class="input-group">
-                    <textarea id="regAddress" required minlength="10" placeholder="Full Address"></textarea>
-                </div>
-            </div>
+            <h2>Register</h2>
+            <input type="text" id="regName" placeholder="Name" required><br><br>
+            <input type="email" id="regEmail" placeholder="Email" required><br><br>
+            <input type="number" id="regMobile" placeholder="Mobile" required><br><br>
+            <input type="date" id="regDob" required><br><br>
+            <input type="text" id="regCity" placeholder="City" required><br><br>
+            <textarea id="regAddress" placeholder="Address" required></textarea><br><br>
             <button type="submit" class="main-btn">Register</button>
         </form>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
