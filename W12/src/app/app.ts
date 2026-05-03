@@ -1,11 +1,32 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('W12');
+  tasks: { text: string; editing: boolean }[] = [];
+  newTask = '';
+
+  addTask() {
+    const text = this.newTask.trim();
+    if (!text) return;
+    this.tasks.push({ text, editing: false });
+    this.newTask = '';
+  }
+
+  deleteTask(i: number) {
+    this.tasks.splice(i, 1);
+  }
+
+  editTask(i: number) {
+    this.tasks[i].editing = true;
+  }
+
+  saveTask(i: number) {
+    this.tasks[i].editing = false;
+  }
 }

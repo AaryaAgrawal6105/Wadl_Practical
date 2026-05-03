@@ -1,0 +1,25 @@
+<div class="form-card">
+  <h2>Register</h2>
+  <form (ngSubmit)="submit()">
+    <label>
+      Full Name
+      <input type="text" name="fullName" [(ngModel)]="user.fullName">
+    </label>
+    <label>
+      Username
+      <input type="text" name="username" [(ngModel)]="user.username">
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" [(ngModel)]="user.email">
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" [(ngModel)]="user.password">
+    </label>
+    <button type="submit">Register</button>
+  </form>
+  @if (message) {
+    <p class="message">{{ message }}</p>
+  }
+</div>

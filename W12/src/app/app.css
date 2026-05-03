@@ -1,0 +1,54 @@
+body{
+  background-color:bisque;
+}
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: rgb(218, 170, 170);
+}
+
+h1 {
+  text-align: center;
+}
+
+.add-task {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.add-task input {
+  flex: 1;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+li span,
+li input {
+  flex: 1;
+}
+
+li.empty {
+  color: #888;
+  font-style: italic;
+  justify-content: center;
+}

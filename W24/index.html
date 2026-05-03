@@ -4,13 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Movie Reviews</title>
     <link rel="stylesheet" href="lib/jquery.mobile.min.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="lib/jquery.min.js"></script>
     <script src="lib/jquery.mobile.min.js"></script>
-    <style>
-        .ui-header { background: #d32f2f !important; color: white !important; text-shadow: none; }
-        .movie-info { padding: 15px; }
-        .rating { color: #fbc02d; font-weight: bold; font-size: 1.2rem; }
-    </style>
 </head>
 <body>
 
@@ -20,7 +16,7 @@
         <h1>Movie Central</h1>
     </div>
 
-    <div role="main" class="ui-content">
+    <div data-role="main" class="ui-content">
         <h3>Recent Reviews</h3>
         <ul data-role="listview" data-inset="true">
             <li><a href="#inception" data-transition="slide">Inception</a></li>

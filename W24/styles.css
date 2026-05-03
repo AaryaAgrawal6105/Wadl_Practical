@@ -6,13 +6,24 @@ body {
 
 /* HEADER */
 .ui-header {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
-    border: none !important;
+    background: #d32f2f !important;
     color: white !important;
+    text-shadow: none;
 }
 
 .ui-header h1 {
     color: white !important;
+}
+
+/* MOVIE INFO */
+.movie-info {
+    padding: 15px;
+}
+
+.rating {
+    color: #fbc02d;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 

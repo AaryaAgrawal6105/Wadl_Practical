@@ -40,7 +40,8 @@ seedData();
 // --- Routes ---
 
 const generateTable = (title, songs) => {
-    let html = `<h3>${title}</h3><table border="1">
+    let html = `<h3>${title}</h3>
+                <table border="1">
                 <tr><th>Song</th><th>Film</th><th>Director</th><th>Singer</th><th>Actor</th><th>Actress</th></tr>`;
     songs.forEach(s => {
         html += `<tr><td>${s.Songname}</td><td>${s.Film}</td><td>${s.Music_director}</td>

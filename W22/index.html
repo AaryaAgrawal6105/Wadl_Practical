@@ -3,12 +3,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="lib/jquery.mobile.min.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="lib/jquery.min.js"></script>
     <script src="lib/jquery.mobile.min.js"></script>
-    <style>
-        .ui-header { background: #004a99 !important; color: white !important; text-shadow: none; }
-        .content-padding { padding: 15px; }
-    </style>
 </head>
 <body>
 
@@ -18,9 +15,9 @@
         <h1>PICT College</h1>
     </div>
 
-    <div role="main" class="ui-content">
-        <div style="text-align:center; padding: 20px 0;">
-            <img src="https://pict.edu/images/logo.png" style="width: 80px;" alt="PICT Logo">
+    <div data-role="main" class="ui-content">
+        <div class="welcome-block">
+            <img src="https://pict.edu/images/logo.png" class="logo-img" alt="PICT Logo">
             <h3>Welcome to PICT</h3>
         </div>
         
@@ -33,7 +30,7 @@
             </ul>
         </div>
 
-        <ul data-role="listview" data-inset="true" style="margin-top: 20px;">
+        <ul data-role="listview" data-inset="true" class="search-list">
             <li><a href="#departments" data-transition="pop">Search Departments</a></li>
         </ul>
     </div>
@@ -45,12 +42,12 @@
         <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Home</a>
         <h1>About</h1>
     </div>
-    <div class="ui-content content-padding">
+    <div data-role="content" class="ui-content content-padding">
         <h2>About PICT</h2>
         <p>Pune Institute of Computer Technology is a premier technical institute.</p>
         
         <!-- COLLAPSIBLE CONTENT -->
-        <div data-role="collapsible" data-collapsed="false">
+        <div data-role="collapsible">
             <h4>Our Mission</h4>
             <p>To be the most sought-after institute in technical education and research.</p>
         </div>
@@ -83,7 +80,7 @@
         <a href="#home" data-icon="home" data-transition="pop" data-direction="reverse">Home</a>
         <h1>Departments</h1>
     </div>
-    <div class="ui-content content-padding">
+    <div data-role="content" class="ui-content content-padding">
         <ul data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true">
             <li>CE Department</li>
             <li>IT Department</li>

@@ -1,44 +1,23 @@
-/* GLOBAL */
-body {
-    font-family: 'Segoe UI', sans-serif !important;
-    background: #f4f6fb !important;
-}
-
-/* HEADER */
 .ui-header {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
-    border: none !important;
+    background: #004a99 !important;
     color: white !important;
+    text-shadow: none;
 }
 
-
-/* NAVBAR */
-.ui-navbar ul li a {
-    color: #333 !important;
-    font-weight: bold;
+.content-padding {
+    padding: 15px;
 }
 
-
-/* CONTENT SPACING */
-.ui-content {
-    padding: 15px !important;
-}
-
-/* COLLAPSIBLE (cards feel) */
-.ui-collapsible {
-    margin-bottom: 15px !important;
-    border-radius: 10px !important;
-    overflow: hidden;
-}
-
-.ui-collapsible-content {
-    background: #f9fafb !important;
-}
-
-
-/* FOOTER */
-.ui-footer {
-    background: #222 !important;
-    color: white !important;
+.welcome-block {
     text-align: center;
+    padding: 20px 0;
+}
+
+.logo-img {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.search-list {
+    margin-top: 20px;
 }

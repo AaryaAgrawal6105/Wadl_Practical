@@ -1,0 +1,17 @@
+<div class="form-card">
+  <h2>Login</h2>
+  <form (ngSubmit)="submit()">
+    <label>
+      Username
+      <input type="text" name="username" [(ngModel)]="username">
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" [(ngModel)]="password">
+    </label>
+    <button type="submit">Login</button>
+  </form>
+  @if (message) {
+    <p class="message">{{ message }}</p>
+  }
+</div>
