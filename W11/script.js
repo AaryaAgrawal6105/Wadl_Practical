@@ -1,69 +1,65 @@
+// Switch between Login and Register forms
 function showForm(type) {
-    document.getElementById("loginForm").style.display = type === "login" ? "block" : "none";
-    document.getElementById("registerForm").style.display = type === "register" ? "block" : "none";
-    document.getElementById("loginTab").classList.toggle("active", type === "login");
-    document.getElementById("registerTab").classList.toggle("active", type === "register");
+    document.getElementById("loginForm").style.display = (type === 'login') ? 'block' : 'none';
+    document.getElementById("registerForm").style.display = (type === 'register') ? 'block' : 'none';
+    
+    document.getElementById("loginTab").className = (type === 'login') ? 'active' : '';
+    document.getElementById("registerTab").className = (type === 'register') ? 'active' : '';
 }
 
-function val(id) {
-    return document.getElementById(id).value;
-}
+// Handle Registration
+function handleRegister(event) {
+    event.preventDefault();
 
-function handleRegister(e) {
-    e.preventDefault();
-
-    const user = {
-        name: val("regName"),
-        email: val("regEmail"),
-        mobile: val("regMobile"),
-        dob: val("regDob"),
-        city: val("regCity"),
-        address: val("regAddress")
+    // Get values from form
+    let user = {
+        name: document.getElementById("regName").value,
+        email: document.getElementById("regEmail").value,
+        mobile: document.getElementById("regMobile").value,
+        dob: document.getElementById("regDob").value,
+        city: document.getElementById("regCity").value,
+        address: document.getElementById("regAddress").value
     };
 
-    // AJAX POST
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/save");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify(user));
-
-    // Save to localStorage
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+    // Save to Local Storage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));
 
-    alert("Registered!");
-    location.href = "users.html";
+    alert("Registered Successfully!");
+    window.location.href = "users.html"; // Go to list page
 }
 
-function handleLogin(e) {
-    e.preventDefault();
-    if (val("loginUser") && val("loginPass")) {
-        alert("Welcome, " + val("loginUser"));
-        location.href = "users.html";
-    }
+// Handle Login
+function handleLogin(event) {
+    event.preventDefault();
+    alert("Login Successful!");
+    window.location.href = "users.html";
 }
 
+// Clear all data
 function clearData() {
-    if (confirm("Clear all users?")) {
-        localStorage.removeItem("users");
-        location.reload();
-    }
+    localStorage.removeItem("users");
+    location.reload();
 }
 
-// Run only on users.html
-if (location.pathname.includes("users.html")) {
-    document.addEventListener("DOMContentLoaded", () => {
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        document.getElementById("userTableBody").innerHTML = users.map(u => `
-            <tr>
+// Display users in the table (runs only on users.html)
+if (window.location.pathname.includes("users.html")) {
+    window.onload = function() {
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        let html = "";
+        
+        users.forEach(u => {
+            html += `<tr>
                 <td>${u.name}</td>
                 <td>${u.email}</td>
                 <td>${u.mobile}</td>
                 <td>${u.dob}</td>
                 <td>${u.city}</td>
                 <td>${u.address}</td>
-            </tr>
-        `).join("");
-    });
+            </tr>`;
+        });
+        
+        document.getElementById("userTableBody").innerHTML = html;
+    };
 }
