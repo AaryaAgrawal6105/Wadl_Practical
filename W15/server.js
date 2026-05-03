@@ -1,7 +1,9 @@
 const express = require("express");
 const fs = require("fs");
+const cors = require("cors");
 
 const app = express();
+app.use(cors({ origin: "*" }))
 app.use(express.static("public"));
 
 app.get("/api/products", (req, res) => {
