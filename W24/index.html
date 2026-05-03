@@ -1,89 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Movie Reviews</title>
-<link rel="stylesheet" href="lib/jquery.mobile.min.css">
-<link rel="stylesheet" href="styles.css">
-<script src="lib/jquery.min.js"></script>
-<script src="lib/jquery.mobile.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Reviews</title>
+    <link rel="stylesheet" href="lib/jquery.mobile.min.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/jquery.mobile.min.js"></script>
+    <style>
+        .ui-header { background: #d32f2f !important; color: white !important; text-shadow: none; }
+        .movie-info { padding: 15px; }
+        .rating { color: #fbc02d; font-weight: bold; font-size: 1.2rem; }
+    </style>
 </head>
 <body>
 
-<!-- HOME -->
+<!-- HOME PAGE -->
 <div data-role="page" id="home">
-  <div data-role="header"><h1>Movie Reviews</h1></div>
-  <div data-role="content">
-    <h3>Pick a movie</h3>
-    <ul data-role="listview" data-inset="true">
-      <li><a href="#inception">Inception</a></li>
-      <li><a href="#darkknight">The Dark Knight</a></li>
-      <li><a href="#idiots">3 Idiots</a></li>
-      <li><a href="#interstellar">Interstellar</a></li>
-    </ul>
-  </div>
-  <div data-role="footer"><h4>&copy; My Movie Blog</h4></div>
+    <div data-role="header">
+        <h1>Movie Central</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <h3>Recent Reviews</h3>
+        <ul data-role="listview" data-inset="true">
+            <li><a href="#inception" data-transition="slide">Inception</a></li>
+            <li><a href="#darkknight" data-transition="slide">The Dark Knight</a></li>
+            <li><a href="#interstellar" data-transition="slide">Interstellar</a></li>
+            <li><a href="#dangal" data-transition="slide">Dangal</a></li>
+        </ul>
+    </div>
 </div>
 
-<!-- INCEPTION -->
+<!-- MOVIE: INCEPTION -->
 <div data-role="page" id="inception">
-  <div data-role="header">
-    <a href="#home" data-rel="back" class="ui-btn-left" data-icon="back">Back</a>
-    <h1>Inception</h1>
-  </div>
-  <div data-role="content">
-    <img src="images/inception.jpg" alt="Inception" width="100%">
-    <p><strong>Genre:</strong> Sci-Fi / Thriller</p>
-    <p><strong>Summary:</strong> A thief who steals secrets through dream-sharing technology is given the inverse task of planting an idea.</p>
-    <p><strong>Review:</strong> Mind-bending plot with stunning visuals. Nolan's masterpiece.</p>
-  </div>
-  <div data-role="footer"><h4>&copy; My Movie Blog</h4></div>
+    <div data-role="header">
+        <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+        <h1>Inception</h1>
+    </div>
+    <div class="ui-content movie-info">
+        <h2>Inception (2010)</h2>
+        <p class="rating">Rating: ★★★★★</p>
+        <p><strong>Review:</strong> A mind-bending masterpiece by Christopher Nolan. The concept of dreams within dreams is brilliantly executed.</p>
+        <img src="https://via.placeholder.com/300x150?text=Inception" width="100%">
+    </div>
 </div>
 
-<!-- DARK KNIGHT -->
+<!-- MOVIE: DARK KNIGHT -->
 <div data-role="page" id="darkknight">
-  <div data-role="header">
-    <a href="#home" data-rel="back" class="ui-btn-left" data-icon="back">Back</a>
-    <h1>The Dark Knight</h1>
-  </div>
-  <div data-role="content">
-    <img src="images/darkknight.jpg" alt="The Dark Knight" width="100%">
-    <p><strong>Genre:</strong> Action / Crime</p>
-    <p><strong>Summary:</strong> Batman faces the Joker, a criminal mastermind who plunges Gotham into chaos.</p>
-    <p><strong>Review:</strong> Heath Ledger delivers an unforgettable performance. Benchmark for superhero films.</p>
-  </div>
-  <div data-role="footer"><h4>&copy; My Movie Blog</h4></div>
+    <div data-role="header">
+        <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+        <h1>Dark Knight</h1>
+    </div>
+    <div class="ui-content movie-info">
+        <h2>The Dark Knight (2008)</h2>
+        <p class="rating">Rating: ★★★★★</p>
+        <p><strong>Review:</strong> Perhaps the greatest superhero movie ever made. Heath Ledger's Joker is legendary.</p>
+        <img src="https://via.placeholder.com/300x150?text=The+Dark+Knight" width="100%">
+    </div>
 </div>
 
-<!-- 3 IDIOTS -->
-<div data-role="page" id="idiots">
-  <div data-role="header">
-    <a href="#home" data-rel="back" class="ui-btn-left" data-icon="back">Back</a>
-    <h1>3 Idiots</h1>
-  </div>
-  <div data-role="content">
-    <img src="images/3idiots.jpg" alt="3 Idiots" width="100%">
-    <p><strong>Genre:</strong> Comedy / Drama</p>
-    <p><strong>Summary:</strong> Three engineering students navigate friendship, rebellion, and societal pressure.</p>
-    <p><strong>Review:</strong> Heartwarming, hilarious, and deeply relatable. Aamir Khan at his best.</p>
-  </div>
-  <div data-role="footer"><h4>&copy; My Movie Blog</h4></div>
-</div>
-
-<!-- INTERSTELLAR -->
+<!-- MOVIE: INTERSTELLAR -->
 <div data-role="page" id="interstellar">
-  <div data-role="header">
-    <a href="#home" data-rel="back" class="ui-btn-left" data-icon="back">Back</a>
-    <h1>Interstellar</h1>
-  </div>
-  <div data-role="content">
-    <img src="images/interstellar.jpg" alt="Interstellar" width="100%">
-    <p><strong>Genre:</strong> Sci-Fi / Drama</p>
-    <p><strong>Summary:</strong> Explorers travel through a wormhole in search of a new habitable planet for humanity.</p>
-    <p><strong>Review:</strong> Emotionally powerful and scientifically grounded. Hans Zimmer's score is unmatched.</p>
-  </div>
-  <div data-role="footer"><h4>&copy; My Movie Blog</h4></div>
+    <div data-role="header">
+        <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+        <h1>Interstellar</h1>
+    </div>
+    <div class="ui-content movie-info">
+        <h2>Interstellar (2014)</h2>
+        <p class="rating">Rating: ★★★★☆</p>
+        <p><strong>Review:</strong> A visually stunning space odyssey that explores the power of love and time.</p>
+        <img src="https://via.placeholder.com/300x150?text=Interstellar" width="100%">
+    </div>
+</div>
+
+<!-- MOVIE: DANGAL -->
+<div data-role="page" id="dangal">
+    <div data-role="header">
+        <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Back</a>
+        <h1>Dangal</h1>
+    </div>
+    <div class="ui-content movie-info">
+        <h2>Dangal (2016)</h2>
+        <p class="rating">Rating: ★★★★★</p>
+        <p><strong>Review:</strong> An inspiring biographical sports drama that is both emotional and powerful.</p>
+        <img src="https://via.placeholder.com/300x150?text=Dangal" width="100%">
+    </div>
 </div>
 
 </body>

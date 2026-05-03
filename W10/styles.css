@@ -22,8 +22,8 @@ h2, h3 {
 }
 
 /* INPUTS */
-input, select {
-    width: 100%;
+input {
+    width: 94%;
     padding: 10px;
     margin-bottom: 12px;
     border-radius: 6px;
@@ -90,13 +90,4 @@ li button {
 
 .del-btn:hover {
     background: #dc2626;
-}
-
-/* RESULT BOX */
-#result {
-    margin-top: 15px;
-    padding: 12px;
-    background: #f3f4f6;
-    border-radius: 8px;
-    text-align: center;
 }

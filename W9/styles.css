@@ -12,7 +12,6 @@ body {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     text-align: center;
 }
 
@@ -24,18 +23,18 @@ h2 {
 
 /* INPUT */
 input {
-    width: 80%;
+    width: 90%;
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
-    outline: none;
+    outline: solid 2px black;
 }
 
 /* BUTTON */
 button {
     padding: 10px 15px;
-    border: none;
+    border: 1px solid black;
     border-radius: 6px;
     background: #4f46e5;
     color: white;
@@ -69,7 +68,6 @@ button:hover {
     width: 100%;
     object-fit: cover;
     z-index: -1;
-    opacity: 0.9;
 }
 
 .container {
