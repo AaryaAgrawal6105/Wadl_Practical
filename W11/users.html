@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registered Users</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Users List</title>
+    <link rel="stylesheet" href="auth.css">
 </head>
-<body style="padding: 40px 0;">
-    <div class="users-container" style="margin: auto;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-            <h2>Registered Users</h2>
-            <div style="display: flex; gap: 10px;">
-                <button onclick="clearData()" class="main-btn" style="width: auto; margin: 0; padding: 8px 20px; background: #dc3545;">Clear All</button>
-                <button onclick="window.location.href='index.html'" class="main-btn" style="width: auto; margin: 0; padding: 8px 20px;">Add New</button>
-            </div>
-        </div>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
-                    <th>DOB</th>
-                    <th>City</th>
-                    <th>Address</th>
-                </tr>
-            </thead>
-            <tbody id="userTableBody">
-                <!-- Data will be injected here -->
-            </tbody>
-        </table>
-    </div>
 
-    <script src="script.js"></script>
+<body>
+
+<div class="container">
+    <h2>Registered Users</h2>
+
+    <table border="1" width="100%" cellspacing="0" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody id="list"></tbody>
+    </table>
+
+</div>
+
+<script>
+const users =
+    JSON.parse(localStorage.getItem("users")) || [];
+
+let output = "";
+
+users.forEach(user=>{
+    output += `
+        <tr>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${user.mobile}</td>
+            <td>${user.city}</td>
+        </tr>
+    `;
+});
+
+document.getElementById("list").innerHTML = output;
+</script>
+
 </body>
 </html>

@@ -1,99 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Event Registration</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
 
-    <!-- Bootstrap CSS -->
+<head>
+    <title>Event Registration</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
 
-<div class="container mt-5">
-    <div class="card shadow p-4">
+    <div class="container mt-5">
+        <div class="card p-4">
 
-        <h2 class="text-center mb-4">Event Registration</h2>
+            <h2 class="text-center mb-4">Event Registration</h2>
 
-        <form class="needs-validation" novalidate>
+            <form class="needs-validation" novalidate>
 
-            <!-- Name -->
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="name" placeholder="Name" required>
-                <label for="name">Full Name</label>
-                <div class="invalid-feedback">Please enter your name</div>
-            </div>
+                <!-- Name -->
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Name" required>
+                    <label>Full Name</label>
+                    <div class="invalid-feedback">Enter name</div>
+                </div>
 
-            <!-- Email -->
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" placeholder="Email" required>
-                <label for="email">Email</label>
-                <div class="invalid-feedback">Enter a valid email</div>
-            </div>
+                <!-- Email -->
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" placeholder="Email" required>
+                    <label>Email</label>
+                    <div class="invalid-feedback">Enter valid email</div>
+                </div>
 
-            <!-- Phone -->
-            <div class="form-floating mb-3">
-                <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
-                <label for="phone">Phone</label>
-                <div class="invalid-feedback">Enter phone number</div>
-            </div>
+                <!-- Phone -->
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" placeholder="Phone" required>
+                    <label>Phone</label>
+                    <div class="invalid-feedback">Enter phone</div>
+                </div>
 
-            <!-- Event Type -->
-            <div class="mb-3">
-                <label class="form-label">Event Type</label>
-                <select class="form-select" required>
-                    <option value="">Select</option>
-                    <option>Workshop</option>
-                    <option>Seminar</option>
-                </select>
-                <div class="invalid-feedback">Select an event</div>
-            </div>
+                <!-- Event -->
+                <div class="mb-3">
+                    <label class="form-label">Event</label>
+                    <select class="form-select" required>
+                        <option value="">Select</option>
+                        <option>Workshop</option>
+                        <option>Seminar</option>
+                    </select>
+                    <div class="invalid-feedback">Select event</div>
+                </div>
 
-            <!-- Tooltip Example -->
-            <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input type="text" class="form-control"
-                       data-bs-toggle="tooltip"
-                       title="Choose a unique username"
-                       required>
-            </div>
+                <!-- Username (Tooltip) -->
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Username" data-bs-toggle="tooltip"
+                        title="Unique username" required>
+                    <label>Username</label>
+                </div>
 
-            <!-- Submit -->
-            <button class="btn btn-primary w-100">Register</button>
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary w-100">Register</button>
 
-        </form>
+            </form>
 
+        </div>
     </div>
-</div>
 
-<!-- Bootstrap JS -->
-<script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
-<!-- Enable Tooltips + Validation -->
-<script id="m8example">
-    // TOOLTIP INIT
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    tooltipTriggerList.map(function (el) {
-        return new bootstrap.Tooltip(el)
-    });
+    <script>
+        // Tooltip init (simple)
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+            new bootstrap.Tooltip(el);
+        });
 
-    // VALIDATION
-    (function () {
-        'use strict'
-        var forms = document.querySelectorAll('.needs-validation')
+        // Validation (simple)
+        const form = document.querySelector('.needs-validation');
 
-        Array.prototype.slice.call(forms).forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })();
-</script>
+        form.addEventListener('submit', function (e) {
+            if (!form.checkValidity()) {
+                e.preventDefault();
+            }
+            form.classList.add('was-validated');
+        });
+    </script>
 
 </body>
+
 </html>
