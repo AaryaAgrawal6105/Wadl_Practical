@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular To-Do List</title>
+    
+    <!-- Offline Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Offline AngularJS -->
+    <script src="js/angular.min.js"></script>
+
+    <style>
+        body { background-color: #f8f9fa; padding-top: 50px; }
+        .todo-card { max-width: 600px; margin: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .task-text { font-size: 16px; display: inline-block; width: 100%; }
+        .completed-task { text-decoration: line-through; color: #adb5bd; }
+        
+        /* Smooth transition for editing */
+        .edit-input { width: 100%; }
+    </style>
+</head>
+<body ng-controller="TodoController">
+
+    <div class="container">
+        <div class="card todo-card">
+            <div class="card-header bg-primary text-white text-center py-3">
+                <h3 class="mb-0">Angular To-Do List</h3>
+            </div>
+            
+            <div class="card-body p-4">
+                
+                <!-- Add Task Form -->
+                <form ng-submit="addTask()" class="mb-4">
+                    <div class="input-group">
+                        <!-- TWO-WAY BINDING: ng-model connects this input directly to the $scope.newTaskText variable -->
+                        <input type="text" class="form-control" placeholder="What needs to be done?" ng-model="newTaskText" required>
+                        <button class="btn btn-success" type="submit">Add Task</button>
+                    </div>
+                </form>
+
+                <!-- Task List -->
+                <ul class="list-group">
+                    
+                    <!-- Loop through tasks using ng-repeat -->
+                    <li class="list-group-item d-flex justify-content-between align-items-center" ng-repeat="task in tasks">
+                        
+                        <!-- VIEW MODE: Shows when not editing -->
+                        <div class="d-flex align-items-center w-75" ng-hide="task.isEditing">
+                            <input class="form-check-input me-3" type="checkbox" ng-model="task.completed">
+                            <span class="task-text" ng-class="{'completed-task': task.completed}">
+                                {{ task.text }}
+                            </span>
+                        </div>
+
+                        <!-- EDIT MODE: Shows when editing -->
+                        <div class="w-75" ng-show="task.isEditing">
+                            <!-- TWO-WAY BINDING: Editing this input instantly updates the array data -->
+                            <input type="text" class="form-control edit-input" ng-model="task.text">
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="btn-group">
+                            <!-- Toggle Edit State -->
+                            <button class="btn btn-sm" ng-class="task.isEditing ? 'btn-success' : 'btn-outline-primary'" ng-click="task.isEditing = !task.isEditing">
+                                {{ task.isEditing ? 'Save' : 'Edit' }}
+                            </button>
+                            <!-- Delete Button -->
+                            <button class="btn btn-sm btn-outline-danger" ng-click="deleteTask($index)">
+                                Delete
+                            </button>
+                        </div>
+                        
+                    </li>
+
+                </ul>
+
+                <!-- Empty State Message -->
+                <div class="text-center text-muted mt-3" ng-if="tasks.length === 0">
+                    No tasks yet. Add one above!
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- AngularJS Application Logic -->
+    <script>
+        // Initialize the Angular App
+        var app = angular.module('todoApp', []);
+
+        // Define the Controller
+        app.controller('TodoController', function($scope) {
+            
+            // Initial array of tasks
+            $scope.tasks = [
+                { text: "Set up offline Angular", completed: true, isEditing: false },
+                { text: "Ace the Web Dev Practical", completed: false, isEditing: false }
+            ];
+
+            // Variable linked to the input box via ng-model
+            $scope.newTaskText = "";
+
+            // Function to Add a Task
+            $scope.addTask = function() {
+                if ($scope.newTaskText.trim() !== "") {
+                    // Push a new object to the array
+                    $scope.tasks.push({
+                        text: $scope.newTaskText,
+                        completed: false,
+                        isEditing: false
+                    });
+                    // Clear the input box (Two-way binding magically updates the UI)
+                    $scope.newTaskText = ""; 
+                }
+            };
+
+            // Function to Delete a Task using its array index
+            $scope.deleteTask = function(index) {
+                $scope.tasks.splice(index, 1);
+            };
+        });
+    </script>
+</body>
+</html>

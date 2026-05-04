@@ -1,107 +1,110 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="lib/jquery.mobile.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="lib/jquery.min.js"></script>
-    <script src="lib/jquery.mobile.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/jquery.mobile.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/jquery.mobile.min.js"></script>
 </head>
+
 <body>
 
-<!-- HOME PAGE -->
-<div data-role="page" id="home">
+  <!-- HOME PAGE -->
+  <div data-role="page" id="home">
     <div data-role="header">
-        <h1>PICT College</h1>
+      <h1>PICT College</h1>
     </div>
 
     <div data-role="main" class="ui-content">
-        <div class="welcome-block">
-            <img src="https://pict.edu/images/logo.png" class="logo-img" alt="PICT Logo">
-            <h3>Welcome to PICT</h3>
-        </div>
-        
-        <!-- NAVIGATION BAR -->
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#about" data-transition="slide">About</a></li>
-                <li><a href="#courses" data-transition="slide">Courses</a></li>
-                <li><a href="#contact" data-transition="slide">Contact</a></li>
-            </ul>
-        </div>
+      <div class="welcome-block">
+        <img src="https://pict.edu/images/logo.png" class="logo-img" alt="PICT Logo">
+        <h3>Welcome to PICT</h3>
+      </div>
 
-        <ul data-role="listview" data-inset="true" class="search-list">
-            <li><a href="#departments" data-transition="pop">Search Departments</a></li>
+      <!-- NAVIGATION BAR -->
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#about" data-transition="slide">About</a></li>
+          <li><a href="#courses" data-transition="slide">Courses</a></li>
+          <li><a href="#contact" data-transition="slide">Contact</a></li>
         </ul>
-    </div>
-</div>
+      </div>
 
-<!-- ABOUT PAGE -->
-<div data-role="page" id="about">
+      <ul data-role="listview" data-inset="true" class="search-list">
+        <li><a href="#departments" data-transition="pop">Search Departments</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div data-role="page" id="about">
     <div data-role="header">
-        <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Home</a>
-        <h1>About</h1>
+      <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Home</a>
+      <h1>About</h1>
     </div>
     <div data-role="content" class="ui-content content-padding">
-        <h2>About PICT</h2>
-        <p>Pune Institute of Computer Technology is a premier technical institute.</p>
-        
-        <!-- COLLAPSIBLE CONTENT -->
-        <div data-role="collapsible">
-            <h4>Our Mission</h4>
-            <p>To be the most sought-after institute in technical education and research.</p>
-        </div>
-        <div data-role="collapsible">
-            <h4>Our Vision</h4>
-            <p>Providing quality education and grooming students to be global citizens.</p>
-        </div>
-    </div>
-</div>
+      <h2>About PICT</h2>
+      <p>Pune Institute of Computer Technology is a premier technical institute.</p>
 
-<!-- COURSES PAGE -->
-<div data-role="page" id="courses">
+      <!-- COLLAPSIBLE CONTENT -->
+      <div data-role="collapsible">
+        <h4>Our Mission</h4>
+        <p>To be the most sought-after institute in technical education and research.</p>
+      </div>
+      <div data-role="collapsible">
+        <h4>Our Vision</h4>
+        <p>Providing quality education and grooming students to be global citizens.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COURSES PAGE -->
+  <div data-role="page" id="courses">
     <div data-role="header">
-        <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Home</a>
-        <h1>Courses</h1>
+      <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Home</a>
+      <h1>Courses</h1>
     </div>
     <div class="ui-content content-padding">
-        <h3>UG Programs</h3>
-        <ul data-role="listview" data-inset="true">
-            <li>Computer Engineering</li>
-            <li>Information Technology</li>
-            <li>Electronics & Telecommunication</li>
-        </ul>
+      <h3>UG Programs</h3>
+      <ul data-role="listview" data-inset="true">
+        <li>Computer Engineering</li>
+        <li>Information Technology</li>
+        <li>Electronics & Telecommunication</li>
+      </ul>
     </div>
-</div>
+  </div>
 
-<!-- DEPARTMENTS PAGE -->
-<div data-role="page" id="departments">
+  <!-- DEPARTMENTS PAGE -->
+  <div data-role="page" id="departments">
     <div data-role="header">
-        <a href="#home" data-icon="home" data-transition="pop" data-direction="reverse">Home</a>
-        <h1>Departments</h1>
+      <a href="#home" data-icon="home" data-transition="pop" data-direction="reverse">Home</a>
+      <h1>Departments</h1>
     </div>
     <div data-role="content" class="ui-content content-padding">
-        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true">
-            <li>CE Department</li>
-            <li>IT Department</li>
-            <li>ENTC Department</li>
-            <li>First Year Department</li>
-        </ul>
+      <ul data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true">
+        <li>CE Department</li>
+        <li>IT Department</li>
+        <li>ENTC Department</li>
+        <li>First Year Department</li>
+      </ul>
     </div>
-</div>
+  </div>
 
-<!-- CONTACT PAGE -->
-<div data-role="page" id="contact">
+  <!-- CONTACT PAGE -->
+  <div data-role="page" id="contact">
     <div data-role="header">
-        <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Home</a>
-        <h1>Contact</h1>
+      <a href="#home" data-icon="home" data-transition="slide" data-direction="reverse">Home</a>
+      <h1>Contact</h1>
     </div>
     <div class="ui-content content-padding">
-        <h3>Reach Us</h3>
-        <p><strong>Location:</strong> Dhankawadi, Pune</p>
-        <p><strong>Email:</strong> principal@pict.edu</p>
+      <h3>Reach Us</h3>
+      <p><strong>Location:</strong> Dhankawadi, Pune</p>
+      <p><strong>Email:</strong> principal@pict.edu</p>
     </div>
-</div>
+  </div>
 
 </body>
+
 </html>

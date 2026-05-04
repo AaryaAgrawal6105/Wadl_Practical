@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="authApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular User Portal</title>
+    
+    <!-- Offline Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Offline AngularJS -->
+    <script src="js/angular.min.js"></script>
+
+    <style>
+        body { background-color: #f0f2f5; padding-top: 50px; }
+        .auth-card { max-width: 450px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .profile-card { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body ng-controller="AuthController">
+
+    <div class="container">
+
+        <!-- ==========================================
+             COMPONENT 1: LOGIN VIEW 
+             ========================================== -->
+        <div class="auth-card" ng-show="currentView === 'login'">
+            <h3 class="text-center text-primary mb-4">User Login</h3>
+            
+            <div class="alert alert-danger" ng-show="loginError">{{ loginError }}</div>
+            <div class="alert alert-success" ng-show="loginSuccess">{{ loginSuccess }}</div>
+
+            <form ng-submit="loginUser()">
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" class="form-control" ng-model="loginData.email" required>
+                </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" class="form-control" ng-model="loginData.password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+            <div class="text-center mt-3">
+                <a href="" ng-click="switchView('register')" class="text-decoration-none">Don't have an account? Register here.</a>
+            </div>
+        </div>
+
+
+        <!-- ==========================================
+             COMPONENT 2: REGISTRATION VIEW 
+             ========================================== -->
+        <div class="auth-card" ng-show="currentView === 'register'">
+            <h3 class="text-center text-success mb-4">Create Account</h3>
+            
+            <form ng-submit="registerUser()">
+                <div class="mb-3">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" ng-model="regData.name" required>
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" class="form-control" ng-model="regData.email" required>
+                </div>
+                <div class="mb-3">
+                    <label>Phone Number</label>
+                    <input type="text" class="form-control" ng-model="regData.phone" required>
+                </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" class="form-control" ng-model="regData.password" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Register</button>
+            </form>
+            <div class="text-center mt-3">
+                <a href="" ng-click="switchView('login')" class="text-decoration-none text-muted">Back to Login</a>
+            </div>
+        </div>
+
+
+        <!-- ==========================================
+             COMPONENT 3: PROFILE VIEW 
+             ========================================== -->
+        <div class="profile-card" ng-show="currentView === 'profile'">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="text-dark m-0">Welcome, {{ activeUser.name }}!</h3>
+                <button class="btn btn-outline-danger btn-sm" ng-click="logoutUser()">Logout</button>
+            </div>
+            
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    User Profile Data
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Full Name:</strong> {{ activeUser.name }}</li>
+                    <li class="list-group-item"><strong>Email:</strong> {{ activeUser.email }}</li>
+                    <li class="list-group-item"><strong>Phone Number:</strong> {{ activeUser.phone }}</li>
+                    <li class="list-group-item"><strong>Account Status:</strong> <span class="badge bg-success">Active</span></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AngularJS Application Logic -->
+    <script>
+        var app = angular.module('authApp', []);
+
+        app.controller('AuthController', function($scope, $window) {
+            
+            // --- STATE MANAGEMENT ---
+            // This determines which "Component" is currently visible
+            $scope.currentView = 'login'; 
+
+            // Form data objects bound via ng-model
+            $scope.regData = {};
+            $scope.loginData = {};
+            
+            // Active user data for the Profile Component
+            $scope.activeUser = null;
+            
+            // UI Messages
+            $scope.loginError = "";
+            $scope.loginSuccess = "";
+
+            // Function to switch between views
+            $scope.switchView = function(viewName) {
+                $scope.currentView = viewName;
+                $scope.loginError = ""; // clear errors on switch
+            };
+
+            // --- USER REGISTRATION LOGIC ---
+            $scope.registerUser = function() {
+                // Fetch existing users from LocalStorage or create empty array
+                let usersDB = JSON.parse($window.localStorage.getItem('angularUsers')) || [];
+                
+                // Check if email already exists
+                let userExists = usersDB.find(u => u.email === $scope.regData.email);
+                if(userExists) {
+                    alert("Email is already registered!");
+                    return;
+                }
+
+                // Push new user to database
+                usersDB.push($scope.regData);
+                $window.localStorage.setItem('angularUsers', JSON.stringify(usersDB));
+
+                // Clear form, show success, switch to login
+                $scope.regData = {}; 
+                $scope.loginSuccess = "Registration successful! Please login.";
+                $scope.switchView('login');
+            };
+
+            // --- USER LOGIN LOGIC ---
+            $scope.loginUser = function() {
+                let usersDB = JSON.parse($window.localStorage.getItem('angularUsers')) || [];
+                
+                // Find matching user
+                let matchedUser = usersDB.find(u => 
+                    u.email === $scope.loginData.email && 
+                    u.password === $scope.loginData.password
+                );
+
+                if(matchedUser) {
+                    // Login success: Set active user and switch to profile view
+                    $scope.activeUser = matchedUser;
+                    $scope.loginData = {}; // Clear login form
+                    $scope.loginSuccess = ""; 
+                    $scope.switchView('profile');
+                } else {
+                    $scope.loginError = "Invalid email or password.";
+                }
+            };
+
+            // --- LOGOUT LOGIC ---
+            $scope.logoutUser = function() {
+                $scope.activeUser = null;
+                $scope.switchView('login');
+            };
+
+        });
+    </script>
+</body>
+</html>
